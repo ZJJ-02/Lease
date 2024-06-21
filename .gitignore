@@ -31,3 +31,4 @@ replay_pid*
 /dataSources/
 /dataSources.local.xml
 /target/
+/README.md
