@@ -1,4 +1,4 @@
-com.atguigu.lease.common.config.mvc.CodeEnumConverter
-com.atguigu.lease.common.config.mvc.GlobalExceptionHandler
-com.atguigu.lease.common.config.mybatisPlus.MybatisPlusConfig
-com.atguigu.lease.common.config.minio.MinioConfiguration
+com.group12.lease.common.config.mvc.CodeEnumConverter
+com.group12.lease.common.config.mvc.GlobalExceptionHandler
+com.group12.lease.common.config.mybatisPlus.MybatisPlusConfig
+com.group12.lease.common.config.minio.MinioConfiguration

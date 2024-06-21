@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.lease.web.admin.mapper.PaymentTypeMapper">
+<mapper namespace="com.group12.lease.web.admin.mapper.PaymentTypeMapper">
 
-    <select id="getPaymentTypes" resultType="com.atguigu.lease.model.entity.PaymentType">
+    <select id="getPaymentTypes" resultType="com.group12.lease.model.entity.PaymentType">
         select id,
                name,
                pay_month_count,

@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.lease.web.admin.mapper.SystemUserMapper">
+<mapper namespace="com.group12.lease.web.admin.mapper.SystemUserMapper">
 
     <select id="pageSystemUserByQuery"
-            resultType="com.atguigu.lease.web.admin.vo.system.user.SystemUserItemVo">
+            resultType="com.group12.lease.web.admin.vo.system.user.SystemUserItemVo">
         select su.id,
         username,
         su.name,
@@ -29,7 +29,7 @@
         </where>
     </select>
 
-    <select id="getUserItem" resultType="com.atguigu.lease.web.admin.vo.system.user.SystemUserItemVo"
+    <select id="getUserItem" resultType="com.group12.lease.web.admin.vo.system.user.SystemUserItemVo"
             parameterType="java.lang.Long">
         select su.id,
         username,

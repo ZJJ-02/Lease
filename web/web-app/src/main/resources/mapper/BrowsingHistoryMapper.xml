@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.lease.web.app.mapper.BrowsingHistoryMapper">
+<mapper namespace="com.group12.lease.web.app.mapper.BrowsingHistoryMapper">
 
-    <resultMap id="historyItemVo" type="com.atguigu.lease.web.app.vo.history.HistoryItemVo" autoMapping="true">
+    <resultMap id="historyItemVo" type="com.group12.lease.web.app.vo.history.HistoryItemVo" autoMapping="true">
         <id property="id" column="id"/>
         <result property="apartmentName" column="name"/>
-        <collection property="roomGraphVoList" ofType="com.atguigu.lease.web.app.vo.graph.GraphVo" autoMapping="true"
+        <collection property="roomGraphVoList" ofType="com.group12.lease.web.app.vo.graph.GraphVo" autoMapping="true"
                     select="listGraphVoByRoomId" column="id"/>
     </resultMap>
 
@@ -36,7 +36,7 @@
     </select>
 
     <!-- 根据房间ID查询图片列表 -->
-    <select id="listGraphVoByRoomId" resultType="com.atguigu.lease.web.app.vo.graph.GraphVo">
+    <select id="listGraphVoByRoomId" resultType="com.group12.lease.web.app.vo.graph.GraphVo">
         select
             name,
             url

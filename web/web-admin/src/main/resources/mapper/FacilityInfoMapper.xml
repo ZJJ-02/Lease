@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.lease.web.admin.mapper.FacilityInfoMapper">
+<mapper namespace="com.group12.lease.web.admin.mapper.FacilityInfoMapper">
 
-    <select id="getFacilityInfos" resultType="com.atguigu.lease.model.entity.FacilityInfo">
+    <select id="getFacilityInfos" resultType="com.group12.lease.model.entity.FacilityInfo">
         select fi.id,
                fi.NAME,
                fi.type,
@@ -16,7 +16,7 @@
           and rf.room_id = #{id}
     </select>
 
-    <select id="selectListByApartmentId" resultType="com.atguigu.lease.model.entity.FacilityInfo"
+    <select id="selectListByApartmentId" resultType="com.group12.lease.model.entity.FacilityInfo"
             parameterType="java.lang.Long">
         select id,
                type,

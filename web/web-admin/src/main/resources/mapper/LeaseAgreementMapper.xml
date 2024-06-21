@@ -2,21 +2,21 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.lease.web.admin.mapper.LeaseAgreementMapper">
-    <resultMap id="agreementVoMap" type="com.atguigu.lease.web.admin.vo.agreement.AgreementVo" autoMapping="true">
+<mapper namespace="com.group12.lease.web.admin.mapper.LeaseAgreementMapper">
+    <resultMap id="agreementVoMap" type="com.group12.lease.web.admin.vo.agreement.AgreementVo" autoMapping="true">
         <id property="id" column="id"/>
-        <association property="apartmentInfo" javaType="com.atguigu.lease.model.entity.ApartmentInfo" autoMapping="true">
+        <association property="apartmentInfo" javaType="com.group12.lease.model.entity.ApartmentInfo" autoMapping="true">
             <id property="id" column="apartment_id"/>
             <result property="name" column="apartment_name"/>
         </association>
-        <association property="roomInfo" javaType="com.atguigu.lease.model.entity.RoomInfo" autoMapping="true">
+        <association property="roomInfo" javaType="com.group12.lease.model.entity.RoomInfo" autoMapping="true">
             <id property="id" column="room_id"/>
         </association>
-        <association property="paymentType" javaType="com.atguigu.lease.model.entity.PaymentType" autoMapping="true">
+        <association property="paymentType" javaType="com.group12.lease.model.entity.PaymentType" autoMapping="true">
             <id property="id" column="payment_type_id"/>
             <result property="name" column="payment_type_name"/>
         </association>
-        <association property="leaseTerm" javaType="com.atguigu.lease.model.entity.LeaseTerm" autoMapping="true">
+        <association property="leaseTerm" javaType="com.group12.lease.model.entity.LeaseTerm" autoMapping="true">
             <id property="id" column="lease_term_id"/>
         </association>
     </resultMap>

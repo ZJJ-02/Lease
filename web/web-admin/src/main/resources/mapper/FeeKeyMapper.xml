@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.lease.web.admin.mapper.FeeKeyMapper">
+<mapper namespace="com.group12.lease.web.admin.mapper.FeeKeyMapper">
 
-    <resultMap id="feeKeyVos" type="com.atguigu.lease.web.admin.vo.fee.FeeKeyVo" autoMapping="true">
+    <resultMap id="feeKeyVos" type="com.group12.lease.web.admin.vo.fee.FeeKeyVo" autoMapping="true">
         <id column="id" property="id"/>
-        <collection property="feeValueList" ofType="com.atguigu.lease.model.entity.FeeValue" autoMapping="true">
+        <collection property="feeValueList" ofType="com.group12.lease.model.entity.FeeValue" autoMapping="true">
             <id column="fv_id" property="id"/>
             <result column="fv_name" property="name"/>
             <result column="id" property="feeKeyId"/>

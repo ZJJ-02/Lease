@@ -2,11 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.lease.web.app.mapper.LeaseAgreementMapper">
+<mapper namespace="com.group12.lease.web.app.mapper.LeaseAgreementMapper">
 
-    <resultMap id="agreementItemVo" type="com.atguigu.lease.web.app.vo.agreement.AgreementItemVo" autoMapping="true">
+    <resultMap id="agreementItemVo" type="com.group12.lease.web.app.vo.agreement.AgreementItemVo" autoMapping="true">
         <id column="id" property="id"/>
-        <collection property="roomGraphVoList" ofType="com.atguigu.lease.web.app.vo.graph.GraphVo">
+        <collection property="roomGraphVoList" ofType="com.group12.lease.web.app.vo.graph.GraphVo">
             <result column="name" property="name"/>
             <result column="url" property="url"/>
         </collection>
@@ -24,15 +24,15 @@
                la.lease_end_date,
                la.source_type,
                la.rent,
-               if(status = ${@com.atguigu.lease.model.enums.LeaseStatus@SIGNED.getCode()}
+               if(status = ${@com.group12.lease.model.enums.LeaseStatus@SIGNED.getCode()}
                       and cnt.signed = 1 and cnt.renewing = 0, true, false) is_renewable
         FROM lease_agreement la
                  JOIN room_info ri ON la.room_id = ri.id
                  JOIN apartment_info ai ON la.apartment_id = ai.id
                  left JOIN graph_info gi ON gi.item_id = la.room_id
-                 left join(select sum(if(status = ${@com.atguigu.lease.model.enums.LeaseStatus@SIGNED.getCode()}, 1,
+                 left join(select sum(if(status = ${@com.group12.lease.model.enums.LeaseStatus@SIGNED.getCode()}, 1,
                                          0)) signed,
-                                  sum(if(status = ${@com.atguigu.lease.model.enums.LeaseStatus@RENEWING.getCode()}, 1,
+                                  sum(if(status = ${@com.group12.lease.model.enums.LeaseStatus@RENEWING.getCode()}, 1,
                                          0)) renewing
                            from lease_agreement
                            where is_deleted = 0
@@ -43,6 +43,6 @@
           AND ai.is_deleted = 0
           AND gi.is_deleted = 0
           AND la.phone = #{phone}
-          AND gi.item_type = ${@com.atguigu.lease.model.enums.ItemType@ROOM.getCode()}
+          AND gi.item_type = ${@com.group12.lease.model.enums.ItemType@ROOM.getCode()}
     </select>
 </mapper>
