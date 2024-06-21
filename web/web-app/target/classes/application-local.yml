@@ -1,0 +1,6 @@
+db:
+  mysql:
+    host: localhost
+    pwd: 1234
+  redis:
+    host: localhost

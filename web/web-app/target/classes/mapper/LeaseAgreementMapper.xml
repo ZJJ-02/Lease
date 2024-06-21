@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.lease.web.app.mapper.LeaseAgreementMapper">
+
+    <resultMap id="agreementItemVo" type="com.atguigu.lease.web.app.vo.agreement.AgreementItemVo" autoMapping="true">
+        <id column="id" property="id"/>
+        <collection property="roomGraphVoList" ofType="com.atguigu.lease.web.app.vo.graph.GraphVo">
+            <result column="name" property="name"/>
+            <result column="url" property="url"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="listItem" resultMap="agreementItemVo">
+        SELECT la.id,
+               la.STATUS                                                    leaseStatus,
+               gi.NAME,
+               gi.url,
+               ai.NAME                                                      apartmentName,
+               ri.room_number,
+               la.lease_start_date,
+               la.lease_end_date,
+               la.source_type,
+               la.rent,
+               if(status = ${@com.atguigu.lease.model.enums.LeaseStatus@SIGNED.getCode()}
+                      and cnt.signed = 1 and cnt.renewing = 0, true, false) is_renewable
+        FROM lease_agreement la
+                 JOIN room_info ri ON la.room_id = ri.id
+                 JOIN apartment_info ai ON la.apartment_id = ai.id
+                 left JOIN graph_info gi ON gi.item_id = la.room_id
+                 left join(select sum(if(status = ${@com.atguigu.lease.model.enums.LeaseStatus@SIGNED.getCode()}, 1,
+                                         0)) signed,
+                                  sum(if(status = ${@com.atguigu.lease.model.enums.LeaseStatus@RENEWING.getCode()}, 1,
+                                         0)) renewing
+                           from lease_agreement
+                           where is_deleted = 0
+                             and phone = #{phone}) cnt
+                          on true
+        WHERE la.is_deleted = 0
+          AND ri.is_deleted = 0
+          AND ai.is_deleted = 0
+          AND gi.is_deleted = 0
+          AND la.phone = #{phone}
+          AND gi.item_type = ${@com.atguigu.lease.model.enums.ItemType@ROOM.getCode()}
+    </select>
+</mapper>
