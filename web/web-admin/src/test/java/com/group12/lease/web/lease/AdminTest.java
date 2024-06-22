@@ -1,5 +1,6 @@
 package com.group12.lease.web.lease;
 
+import com.group12.lease.common.utils.SendMessageUtil;
 import com.group12.lease.model.entity.LeaseTerm;
 import com.group12.lease.web.admin.AdminWebApplication;
 import com.group12.lease.web.admin.service.AttrKeyService;
@@ -12,6 +13,7 @@ import com.group12.lease.web.admin.vo.room.RoomDetailVo;
 import com.group12.lease.web.admin.vo.room.RoomItemVo;
 import com.group12.lease.web.admin.vo.room.RoomQueryVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

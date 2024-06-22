@@ -3,12 +3,14 @@ package com.group12.lease.web.app.service.impl;
 
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import com.group12.lease.common.constant.RedisConstant;
 import com.group12.lease.common.context.AppUser;
 import com.group12.lease.common.context.AppUserContext;
 import com.group12.lease.common.exception.LeaseException;
 import com.group12.lease.common.result.ResultCodeEnum;
 import com.group12.lease.common.utils.JwtUtil;
+import com.group12.lease.common.utils.SendMessageUtil;
 import com.group12.lease.model.entity.UserInfo;
 import com.group12.lease.model.enums.BaseStatus;
 import com.group12.lease.web.app.mapper.UserInfoMapper;
@@ -16,11 +18,14 @@ import com.group12.lease.web.app.service.LoginService;
 import com.group12.lease.web.app.vo.user.LoginVo;
 import com.group12.lease.web.app.vo.user.UserInfoVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.group12.lease.common.result.ResultCodeEnum.SERVICE_ERROR;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -30,6 +35,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private UserInfoMapper userInfoMapper;
+
+    @Autowired
+    private SendMessageUtil sendMessageUtil;
 
     @Override
     public void getCode(String phone) {
@@ -41,6 +49,10 @@ public class LoginServiceImpl implements LoginService {
                 RedisConstant.APP_LOGIN_CODE_RESEND_TIME_SEC,
                 TimeUnit.SECONDS
         );
+        SendSmsResponse sendSmsResponse = sendMessageUtil.sendSms2phone(phone, randomCode);
+        if (sendSmsResponse.getStatusCode() != 200){
+            throw new LeaseException(SERVICE_ERROR);
+        }
     }
 
     @Override
