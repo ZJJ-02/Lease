@@ -47,3 +47,26 @@ app:
     core-size: 20
     max-size: 100
     keep-alive-time: 10
+
+lease:
+  auth:
+    path-patterns:
+      include: /admin/**
+      exclude: /admin/login/**
+  minio:
+    endpointUrl: ${db.minio.host}
+    accessKey: ${db.minio.ak}
+    secretKey: ${db.minio.sk}
+    bucketName: lease-admin
+  sms:
+    aliyun:
+      accessKeyId: ${sms.aliyun.accessKeyId}
+      accessKeySecret: ${sms.aliyun.accessKeySecret}
+      signName: ${sms.aliyun.signName}
+      # 是否开启短信服务
+      pushSms: ${sms.aliyun.pushSms}
+      templateCode: ${sms.aliyun.templateCode}
+  thread:
+    core-size: 20
+    max-size: 100
+    keep-alive-time: 10

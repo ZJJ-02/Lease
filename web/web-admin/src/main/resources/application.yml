@@ -47,12 +47,12 @@ lease:
     bucketName: lease-admin
   sms:
     aliyun:
-      accessKeyId: your-access-key-id
-      accessKeySecret: your-access-key-secret
-      signName: ####
+      accessKeyId: ${sms.aliyun.accessKeyId}
+      accessKeySecret: ${sms.aliyun.accessKeySecret}
+      signName: ${sms.aliyun.signName}
       # 是否开启短信服务
-      pushSms: true
-      templateCode: SMS_#########
+      pushSms: ${sms.aliyun.pushSms}
+      templateCode: ${sms.aliyun.templateCode}
   thread:
     core-size: 20
     max-size: 100
