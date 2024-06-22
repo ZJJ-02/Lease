@@ -1,6 +1,7 @@
 package com.group12.lease.web.app.controller.appointment;
 
 
+import com.group12.lease.common.context.AppUserContext;
 import com.group12.lease.common.result.Result;
 import com.group12.lease.model.entity.ViewAppointment;
 import com.group12.lease.web.app.service.ViewAppointmentService;
@@ -24,6 +25,8 @@ public class ViewAppointmentController {
     @Operation(summary = "保存或更新看房预约")
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody ViewAppointment viewAppointment) {
+        //少了这步，导致写数据库时用户id为空，随后用用户id查预约记录就查不出来
+        viewAppointment.setUserId(AppUserContext.get().getUserId());
         viewAppointmentService.saveOrUpdate(viewAppointment);
         return Result.ok();
     }
@@ -31,8 +34,8 @@ public class ViewAppointmentController {
     @Operation(summary = "查询个人预约看房列表")
     @GetMapping("listItem")
     public Result<List<AppointmentItemVo>> listItem() {
-        List<AppointmentItemVo> voList = viewAppointmentService.listItem();
-        return Result.ok(voList);
+        List<AppointmentItemVo> list = viewAppointmentService.listItemByUserId(AppUserContext.get().getUserId());
+        return Result.ok(list);
     }
 
 

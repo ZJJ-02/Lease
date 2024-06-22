@@ -17,4 +17,6 @@ public interface ViewAppointmentService extends IService<ViewAppointment> {
     List<AppointmentItemVo> listItem();
 
     AppointmentDetailVo getDetailById(Long id);
+
+    List<AppointmentItemVo> listItemByUserId(Long userId);
 }
