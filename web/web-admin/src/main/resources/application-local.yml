@@ -8,3 +8,11 @@ db:
     host: http://8.133.198.162:9000
     ak: admin
     sk: admin123456
+sms:
+  aliyun:
+    accessKeyId: your-access-key-id
+    accessKeySecret: your-access-key-secret
+    signName: asherly
+    # 是否开启短信服务
+    pushSms: true
+    templateCode: SMS_#########

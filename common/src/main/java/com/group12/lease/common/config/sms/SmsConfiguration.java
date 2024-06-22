@@ -18,11 +18,6 @@ public class SmsConfiguration {
     private String accessKeyId;
     @Value("${lease.sms.aliyun.accessKeySecret}")
     private String accessKeySecret;
-    @Value("${lease.sms.aliyun.signName}")
-    private String signName;
-    @Value("${lease.sms.aliyun.isPushSms}")
-    private boolean isPushSms;
-
     private final String endPoint = "dysmsapi.aliyuncs.com";
 
     @Bean
