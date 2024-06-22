@@ -10,8 +10,8 @@ db:
     sk: admin123456
 sms:
   aliyun:
-    accessKeyId: your-access-key-id
-    accessKeySecret: your-access-key-secret
+    accessKeyId: LTAI5tB7dgf1pccbSAMQDtj2
+    accessKeySecret: NfWMuipUghASc5OU5Zq8yPCVNZwma5
     signName: asherly
     # 是否开启短信服务
     pushSms: true
