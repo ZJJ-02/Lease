@@ -5,6 +5,6 @@ db:
   redis:
     host: redis
   minio:
-    host: minio
+    host: http://8.133.198.162:9000
     ak: admin
     sk: admin123456
