@@ -4,6 +4,8 @@ import com.group12.lease.common.exception.LeaseException;
 import com.group12.lease.common.result.ResultCodeEnum;
 import com.group12.lease.web.admin.service.FileService;
 import io.minio.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.util.UUID;
 @Service
 public class FileServiceImpl implements FileService {
 
+    private static final Logger log = LoggerFactory.getLogger(FileServiceImpl.class);
     @Value("${lease.minio.endpointUrl}")
     private String endpoint;
 
@@ -41,6 +44,7 @@ public class FileServiceImpl implements FileService {
                     contentType(file.getContentType()).build());
             return String.join("/", endpoint, bucketName, filename);
         } catch (Exception e) {
+            log.error("上传文件有误",e);
             throw new LeaseException(ResultCodeEnum.SERVICE_ERROR);
         }
     }

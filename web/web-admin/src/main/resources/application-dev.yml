@@ -4,3 +4,7 @@ db:
     pwd: 123
   redis:
     host: redis
+  minio:
+    host: minio
+    ak: admin
+    sk: admin123456

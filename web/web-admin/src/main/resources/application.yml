@@ -41,9 +41,9 @@ lease:
       include: /admin/**
       exclude: /admin/login/**
   minio:
-    endpointUrl: http://8.133.198.162:9001
-    accessKey: admin
-    secretKey: admin123456
+    endpointUrl: ${db.minio.host}
+    accessKey: ${db.minio.ak}
+    secretKey: ${db.minio.sk}
     bucketName: lease-admin
   thread:
     core-size: 20

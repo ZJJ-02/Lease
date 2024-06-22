@@ -4,3 +4,7 @@ db:
     pwd: 1234
   redis:
     host: localhost
+  minio:
+    host: http://8.133.198.162:9000
+    ak: admin
+    sk: admin123456
