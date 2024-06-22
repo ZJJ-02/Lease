@@ -8,11 +8,11 @@ db:
     host: http://8.133.198.162:9000
     ak: admin
     sk: admin123456
-sms:
-  aliyun:
-    accessKeyId: LTAI5tB7dgf1pccbSAMQDtj2
-    accessKeySecret: NfWMuipUghASc5OU5Zq8yPCVNZwma5
-    signName: asherly
-    # 是否开启短信服务
-    pushSms: true
-    templateCode: SMS_468445748
+#sms:
+#  aliyun:
+#    accessKeyId: LTAI5tB7dgf1pccbSAMQDtj2
+#    accessKeySecret: NfWMuipUghASc5OU5Zq8yPCVNZwma5
+#    signName: asherly
+#    # 是否开启短信服务
+#    pushSms: true
+#    templateCode: SMS_468445748
