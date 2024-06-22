@@ -45,6 +45,14 @@ lease:
     accessKey: ${db.minio.ak}
     secretKey: ${db.minio.sk}
     bucketName: lease-admin
+  sms:
+    aliyun:
+      accessKeyId: your-access-key-id
+      accessKeySecret: your-access-key-secret
+      signName: ####
+      # 是否开启短信服务
+      pushSms: true
+      templateCode: SMS_#########
   thread:
     core-size: 20
     max-size: 100
