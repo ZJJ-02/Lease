@@ -49,7 +49,7 @@ lease:
     aliyun:
       accessKeyId: ${sms.aliyun.accessKeyId}
       accessKeySecret: ${sms.aliyun.accessKeySecret}
-      signName: ####
+      signName: ${sms.aliyun.signName}
       # 是否开启短信服务
       pushSms: ${sms.aliyun.pushSms}
       templateCode: ${sms.aliyun.templateCode}
