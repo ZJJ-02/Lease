@@ -18,6 +18,10 @@ import static com.group12.lease.common.result.ResultCodeEnum.SERVICE_ERROR;
  */
 @Component
 public class SendMessageUtil {
+
+    @Autowired
+    private Client client;
+
     @Value("${lease.sms.aliyun.accessKeyId}")
     private String accessKeyId;
     @Value("${lease.sms.aliyun.accessKeySecret}")
@@ -46,7 +50,7 @@ public class SendMessageUtil {
                 .setTemplateParam("{\"code\":\"" + code + "\"}");
         SendSmsResponse sendSmsResponse;
         try {
-            sendSmsResponse = client().sendSms(sendSmsRequest);
+            sendSmsResponse = client.sendSms(sendSmsRequest);
         } catch (Exception e) {
             throw new LeaseException(SERVICE_ERROR);
         }

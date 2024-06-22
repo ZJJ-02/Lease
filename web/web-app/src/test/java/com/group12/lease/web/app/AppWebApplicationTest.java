@@ -33,12 +33,12 @@ public class AppWebApplicationTest {
     @Autowired
     LeaseAgreementService leaseAgreementService;
 
-    @Resource
+    @Autowired
     SendMessageUtil sendMessageUtil;
 
     @Test
     void test(){
-        SendSmsResponse sendSmsResponse = sendMessageUtil.sendSms2phone("13918577486", "123456");
+        SendSmsResponse sendSmsResponse = sendMessageUtil.sendSms2phone("13918577486", "523312");
         System.out.println(sendSmsResponse.getStatusCode());
     }
 
