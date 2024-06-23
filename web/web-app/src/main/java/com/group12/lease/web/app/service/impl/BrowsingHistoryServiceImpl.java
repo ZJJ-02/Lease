@@ -2,8 +2,11 @@ package com.group12.lease.web.app.service.impl;
 
 import com.group12.lease.common.context.AppUserContext;
 import com.group12.lease.model.entity.BrowsingHistory;
+import com.group12.lease.model.enums.ItemType;
 import com.group12.lease.web.app.mapper.BrowsingHistoryMapper;
+import com.group12.lease.web.app.mapper.GraphInfoMapper;
 import com.group12.lease.web.app.service.BrowsingHistoryService;
+import com.group12.lease.web.app.vo.graph.GraphVo;
 import com.group12.lease.web.app.vo.history.HistoryItemVo;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -14,12 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
-/**
- * @author liubo
- * @description 针对表【browsing_history(浏览历史)】的数据库操作Service实现
- * @createDate 2023-07-26 11:12:39
- */
+
 @Service
 @Slf4j
 public class BrowsingHistoryServiceImpl extends ServiceImpl<BrowsingHistoryMapper, BrowsingHistory>
@@ -27,13 +27,19 @@ public class BrowsingHistoryServiceImpl extends ServiceImpl<BrowsingHistoryMappe
 
     @Autowired
     private BrowsingHistoryMapper browsingHistoryMapper;
+    @Autowired
+    private GraphInfoMapper graphInfoMapper;
 
     @Override
     public IPage<HistoryItemVo> pageItem(long current, long size) {
         Long userId = AppUserContext.get().getUserId();
         IPage<HistoryItemVo> page = new Page<>(current, size);
-        IPage<HistoryItemVo> pageVo = browsingHistoryMapper.pageItem(page, userId);
-        return pageVo;
+        IPage<HistoryItemVo> pageVoList = browsingHistoryMapper.pageItem(page, userId);
+        for (HistoryItemVo record : pageVoList.getRecords()) {
+            List<GraphVo> graphVoList = graphInfoMapper.selectListByItemTypeAndId(ItemType.ROOM, record.getRoomId());
+            record.setRoomGraphVoList(graphVoList);
+        }
+        return pageVoList;
     }
 
     @Override
