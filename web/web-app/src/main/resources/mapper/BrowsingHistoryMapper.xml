@@ -37,11 +37,11 @@
 
     <!-- 根据房间ID查询图片列表 -->
     <select id="listGraphVoByRoomId" resultType="com.group12.lease.web.app.vo.graph.GraphVo">
-        select
-            name,
-            url
+        select url,
+               name
         from graph_info
         where is_deleted = 0
-          and item_id=#{id}
+          and item_type = 2
+          and item_id = #{room_id}
     </select>
 </mapper>
