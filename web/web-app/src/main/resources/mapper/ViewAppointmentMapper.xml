@@ -31,6 +31,7 @@
     </select>
     <select id="listItemByUserId" resultType="com.group12.lease.web.app.vo.appointment.AppointmentItemVo">
         select va.id,
+               va.apartment_id,
                va.appointment_time,
                va.appointment_status,
                ai.name apartment_name,
