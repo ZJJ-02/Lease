@@ -19,6 +19,9 @@ public class AppointmentItemVo {
     @Schema(description = "预约公寓名称")
     private String apartmentName;
 
+    @Schema(description = "预约公寓Id")
+    private Long apartmentId;
+
     @Schema(description = "公寓图片列表")
     private List<GraphVo> graphVoList;
 
