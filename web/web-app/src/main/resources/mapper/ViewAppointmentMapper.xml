@@ -29,4 +29,18 @@
           AND va.user_id = #{userId}
           AND gi.item_type = ${@com.group12.lease.model.enums.ItemType@APARTMENT.getCode()}
     </select>
+    <select id="listItemByUserId" resultType="com.group12.lease.web.app.vo.appointment.AppointmentItemVo">
+        select va.id,
+               va.appointment_time,
+               va.appointment_status,
+               ai.name apartment_name,
+               gi.name,
+               gi.url
+        from view_appointment va
+                 left join apartment_info ai on va.apartment_id = ai.id and ai.is_deleted = 0
+                 left join graph_info gi on gi.item_type = 1 and gi.item_id = ai.id and gi.is_deleted = 0
+        where va.is_deleted = 0
+          and va.user_id = #{userId}
+        order by va.create_time desc
+    </select>
 </mapper>

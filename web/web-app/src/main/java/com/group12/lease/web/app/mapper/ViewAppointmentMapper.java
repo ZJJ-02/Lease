@@ -16,6 +16,8 @@ public interface ViewAppointmentMapper extends BaseMapper<ViewAppointment> {
 
 
     List<AppointmentItemVo> listItem(Long userId);
+
+    List<AppointmentItemVo> listItemByUserId(Long userId);
 }
 
 
