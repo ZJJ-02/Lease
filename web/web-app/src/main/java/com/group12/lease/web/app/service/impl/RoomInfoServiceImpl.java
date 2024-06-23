@@ -28,11 +28,6 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ThreadPoolExecutor;
 
-/**
- * @author liubo
- * @description 针对表【room_info(房间信息表)】的数据库操作Service实现
- * @createDate 2023-07-26 11:12:39
- */
 @Service
 @Slf4j
 public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
