@@ -48,6 +48,9 @@
             from lease_agreement
             where is_deleted = 0
             and status in(2,5))
+            <if test="queryVo.apartmentId != null">
+                and ri.apartment_id = #{queryVo.apartmentId}
+            </if>
             <if test="queryVo.provinceId != null">
                 and ai.province_id = #{queryVo.provinceId}
             </if>
