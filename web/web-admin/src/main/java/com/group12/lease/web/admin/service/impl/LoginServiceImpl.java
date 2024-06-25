@@ -62,7 +62,7 @@ public class LoginServiceImpl implements LoginService {
             throw new LeaseException(ResultCodeEnum.ADMIN_ACCOUNT_NOT_EXIST_ERROR);
         }
         SystemUser user = list.get(0);
-        if (user.getStatus().equals(BaseStatus.DISABLE.getCode())) {
+        if (user.getStatus().equals(BaseStatus.DISABLE)) {
             throw new LeaseException(ResultCodeEnum.APP_ACCOUNT_DISABLED_ERROR);
         }
         String inputPwd = DigestUtils.md5DigestAsHex(loginVo.getPassword().getBytes(StandardCharsets.UTF_8));
