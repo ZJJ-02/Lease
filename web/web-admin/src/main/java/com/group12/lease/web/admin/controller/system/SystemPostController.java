@@ -1,11 +1,12 @@
 package com.group12.lease.web.admin.controller.system;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.group12.lease.common.result.Result;
 import com.group12.lease.model.entity.SystemPost;
 import com.group12.lease.model.enums.BaseStatus;
 import com.group12.lease.web.admin.service.SystemPostService;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,10 @@ public class SystemPostController {
     @Operation(summary = "获取全部岗位列表")
     @GetMapping("list")
     public Result<List<SystemPost>> list() {
-        return Result.ok(systemPostService.list());
+        LambdaQueryWrapper<SystemPost> wrapper = new LambdaQueryWrapper<>();
+        List<SystemPost> list = systemPostService.list(wrapper);
+        return Result.ok(list);
+        // return Result.ok(systemPostService.list());
     }
 
     @Operation(summary = "根据岗位id修改状态")
