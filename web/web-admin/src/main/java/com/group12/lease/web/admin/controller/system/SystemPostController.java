@@ -51,6 +51,7 @@ public class SystemPostController {
     @GetMapping("list")
     public Result<List<SystemPost>> list() {
         LambdaQueryWrapper<SystemPost> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SystemPost::getStatus, BaseStatus.ENABLE);
         List<SystemPost> list = systemPostService.list(wrapper);
         return Result.ok(list);
         // return Result.ok(systemPostService.list());
