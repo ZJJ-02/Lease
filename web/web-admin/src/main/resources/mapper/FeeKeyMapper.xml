@@ -23,9 +23,8 @@
             fv.unit
         FROM
             fee_key fk
-                LEFT JOIN fee_value fv ON fv.fee_key_id = fk.id
+                LEFT JOIN fee_value fv ON fv.fee_key_id = fk.id  AND fv.is_deleted = 0
         WHERE
             fk.is_deleted = 0
-          AND fv.is_deleted = 0
     </select>
 </mapper>
