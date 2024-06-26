@@ -9,7 +9,8 @@
         <collection property="feeValueList" ofType="com.group12.lease.model.entity.FeeValue" autoMapping="true">
             <id column="fv_id" property="id"/>
             <result column="fv_name" property="name"/>
-            <result column="id" property="feeKeyId"/>
+            <result column="fv_unit" property="unit"/>
+            <result column="key_id" property="feeKeyId"/>
         </collection>
     </resultMap>
 
@@ -19,7 +20,7 @@
             fk.NAME,
             fv.id   fv_id,
             fv.NAME fv_name,
-            fv.unit,
+            fv.unit fv_unit,
             fv.fee_key_id key_id
         FROM
             fee_key fk
