@@ -17,10 +17,10 @@
         SELECT
             fk.id,
             fk.NAME,
-            fk.create_time,
             fv.id   fv_id,
             fv.NAME fv_name,
-            fv.unit
+            fv.unit,
+            fv.fee_key_id key_id
         FROM
             fee_key fk
                 LEFT JOIN fee_value fv ON fv.fee_key_id = fk.id  AND fv.is_deleted = 0
